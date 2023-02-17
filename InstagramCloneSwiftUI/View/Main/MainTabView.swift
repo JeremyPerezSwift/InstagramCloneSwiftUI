@@ -31,7 +31,7 @@ struct MainTabView: View {
                 UploadPostView()
                     .tabItem {
                         Image(systemName: "plus.square")
-    //                        .environment(\.symbolVariants, .none)
+                            .environment(\.symbolVariants, .none)
                     }
                 
                 NotificationsView()
@@ -50,10 +50,27 @@ struct MainTabView: View {
             }
             .navigationTitle("Home")
             .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    logoutButton
+                }
+            }
             .tint(.black)
         }
         
     }
+    
+    var logoutButton: some View {
+        Button {
+            AuthViewModel.shared.signout()
+        } label: {
+            Text("Logout")
+                .foregroundColor(.black)
+                .bold()
+        }
+
+    }
+    
 }
 
 struct MainTabView_Previews: PreviewProvider {
