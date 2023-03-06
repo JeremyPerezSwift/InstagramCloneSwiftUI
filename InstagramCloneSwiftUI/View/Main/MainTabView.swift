@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct MainTabView: View {
+    let user: User
     
     var body: some View {
-        
         NavigationView {
             TabView {
                 
@@ -40,7 +40,7 @@ struct MainTabView: View {
                             .environment(\.symbolVariants, .none)
                     }
                 
-                ProfileView()
+                ProfileView(user: user)
                     .tabItem {
                         Image(systemName: "person")
                             .environment(\.symbolVariants, .none)
@@ -73,8 +73,8 @@ struct MainTabView: View {
     
 }
 
-struct MainTabView_Previews: PreviewProvider {
-    static var previews: some View {
-        MainTabView()
-    }
-}
+//struct MainTabView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        MainTabView()
+//    }
+//}
