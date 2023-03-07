@@ -8,10 +8,14 @@
 import SwiftUI
 
 struct UploadPostView: View {
+    @ObservedObject var viewModel = UploadPostViewModel()
+    
     @State private var selectedImage: UIImage?
     @State var postImage: Image?
     @State var captionText = ""
     @State var imagePickerPresented = false
+    
+    @Binding var selectedIndex: Int
     
     var body: some View {
         VStack {
@@ -42,23 +46,43 @@ struct UploadPostView: View {
                         .frame(width: 70, height: 70)
                         .clipped()
                     
-                    TextField("Enter your caption...", text: $captionText)
-                        .font(.system(size: 13))
-                    
+                    TextAreaView(text: $captionText, placeholder: "Enter your caption...")
+                        .frame(height: 200)
                 }
                 .padding()
                 
-                Button {
+                HStack {
+                    Button {
+                        captionText = ""
+                        postImage = nil
+                    } label: {
+                        Text("Cancel")
+                            .font(.system(size: 14, weight: .semibold))
+                            .frame(width: UIScreen.main.bounds.width / 2.2, height: 50)
+                            .background(.black.opacity(0.9))
+                            .foregroundColor(.white)
+                            .cornerRadius(5)
+                    }
+                    .padding(.top)
                     
-                } label: {
-                    Text("Share")
-                        .font(.system(size: 14, weight: .semibold))
-                        .frame(width: UIScreen.main.bounds.width / 1.1, height: 50)
-                        .background(Color(.systemBlue))
-                        .foregroundColor(.white)
-                        .cornerRadius(5)
+                    Button {
+                        guard let image = selectedImage else { return }
+                        viewModel.uploadPost(caption: captionText, image: image) { error in
+                            captionText = ""
+                            postImage = nil
+                            selectedIndex = 0
+                        }
+                    } label: {
+                        Text("Share")
+                            .font(.system(size: 14, weight: .semibold))
+                            .frame(width: UIScreen.main.bounds.width / 2.2, height: 50)
+                            .background(Color(.systemBlue))
+                            .foregroundColor(.white)
+                            .cornerRadius(5)
+                    }
+                    .padding(.top)
                 }
-                .padding(.top)
+                
 
             }
             
@@ -76,8 +100,8 @@ extension UploadPostView {
     }
 }
 
-struct UploadPostView_Previews: PreviewProvider {
-    static var previews: some View {
-        UploadPostView()
-    }
-}
+//struct UploadPostView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        UploadPostView()
+//    }
+//}
