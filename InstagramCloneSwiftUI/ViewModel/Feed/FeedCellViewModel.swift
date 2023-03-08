@@ -30,6 +30,7 @@ class FeedCellViewModel: ObservableObject {
             COLLECTION_USERS.document(uid).collection("user-likes").document(postId).setData([:]) { _ in
                 
                 COLLECTION_POSTS.document(postId).updateData(["likes": self.post.likes + 1])
+                NotificationViewModel.uploadNotification(toUid: self.post.ownerUid, type: .like, post: self.post)
                 
                 self.post.didLike = true
                 self.post.likes += 1
