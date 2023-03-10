@@ -11,6 +11,8 @@ import Kingfisher
 struct ProfileHeaderView: View {
     @ObservedObject var viewModel: ProfileViewModel
     
+    var buiUser: String { return viewModel.user.bio ?? "Add bio" }
+    
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
@@ -25,9 +27,9 @@ struct ProfileHeaderView: View {
                 Spacer()
                 
                 HStack(spacing: 12) {
-                    UserStatView(value: 3, title: "Post")
-                    UserStatView(value: 2, title: "Followers")
-                    UserStatView(value: 1, title: "Following")
+                    UserStatView(value: viewModel.user.stats?.posts ?? 0, title: "Post")
+                    UserStatView(value: viewModel.user.stats?.followers ?? 0, title: "Followers")
+                    UserStatView(value: viewModel.user.stats?.following ?? 0, title: "Following")
                 }
                 .padding(.trailing)
             }
@@ -36,7 +38,7 @@ struct ProfileHeaderView: View {
                 Text(viewModel.user.fullname)
                     .font(.system(size: 13, weight: .semibold))
                 
-                Text("Ghotam's Dark Knight || Billionaire")
+                Text(buiUser)
                     .font(.system(size: 13))
                     .padding(.top, -5)
             }

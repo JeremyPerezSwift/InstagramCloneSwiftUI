@@ -15,10 +15,11 @@ struct PostGridView: View {
     private let items = [GridItem(), GridItem(), GridItem()]
     private let width = UIScreen.main.bounds.width / 3
     
-    init(config: PostGridConfiguration) {
-        self.config = config
-        self.viewModel = PostGridViewModel(config: config)
-    }
+//    init(config: PostGridConfiguration) {
+//        self.config = config
+//        self.viewModel = PostGridViewModel(config: config)
+//        print("DEBUG: fetchUserPost 0")
+//    }
     
     var body: some View {
         LazyVGrid(columns: items, spacing: 2) {
@@ -32,8 +33,10 @@ struct PostGridView: View {
                         .scaledToFill()
                         .frame(width: width, height: width)
                         .clipped()
+                        .background(.gray)
                 }
             }
+            
         }
     }
 }

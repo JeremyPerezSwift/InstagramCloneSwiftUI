@@ -22,7 +22,7 @@ struct NotificationCell: View {
         HStack {
             NavigationLink {
                 if let user = viewModel.notification.user {
-                    ProfileView(user: user)
+                    ProfileView(viewModel: ProfileViewModel(user: user))
                 }
             } label: {
                 KFImage(URL(string: viewModel.notification.profileImageURL))
@@ -33,8 +33,7 @@ struct NotificationCell: View {
                     .clipShape(Circle())
                 
                 Text(viewModel.notification.username)
-                    .font(.system(size: 13, weight: .semibold)) + Text(" \(viewModel.notification.type.notificationMessage)")
-                    .font(.system(size: 14))
+                    .font(.system(size: 13, weight: .semibold)) + Text(" \(viewModel.notification.type.notificationMessage)  ").font(.system(size: 14)) + Text(viewModel.timestampString).font(.system(size: 12)).foregroundColor(.gray)
             }
 
             

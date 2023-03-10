@@ -17,9 +17,18 @@ class FeedCellViewModel: ObservableObject {
         return "\(post.likes) \(label)"
     }
     
+    var timestampString: String {
+        let formatter = DateComponentsFormatter()
+        formatter.allowedUnits = [.second, .minute, .hour, .day, .weekOfMonth]
+        formatter.maximumUnitCount = 1
+        formatter.unitsStyle = .abbreviated
+        return formatter.string(from: post.timestamp.dateValue(), to: Date()) ?? ""
+    }
+    
     init(post: Post) {
         self.post = post
         checkIfUserLikedPost()
+        fetchNotificationUser()
     }
     
     func like() {
@@ -61,6 +70,12 @@ class FeedCellViewModel: ObservableObject {
         COLLECTION_USERS.document(uid).collection("user-likes").document(postId).getDocument { snapshot, _ in
             guard let didLike = snapshot?.exists else { return }
             self.post.didLike = didLike
+        }
+    }
+    
+    func fetchNotificationUser() {
+        COLLECTION_USERS.document(post.ownerUid).getDocument { snapshot, _ in
+            self.post.user = try? snapshot?.data(as: User.self)
         }
     }
     

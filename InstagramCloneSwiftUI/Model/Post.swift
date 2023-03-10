@@ -19,5 +19,7 @@ struct Post: Identifiable, Decodable {
     let timestamp: Timestamp
     
     var didLike: Bool? = false
+    
+    var user: User?
 }
 

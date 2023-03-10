@@ -22,7 +22,8 @@ struct SearchView: View {
                 if inSearchMode {
                     UserListView(viewModel: viewModel, searchText: $searchText)
                 } else {
-                    PostGridView(config: .explore)
+//                    PostGridView(config: .explore)
+                    PostGridView(viewModel: PostGridViewModel(config: .explore), config: .explore)
                 }
             }
         }

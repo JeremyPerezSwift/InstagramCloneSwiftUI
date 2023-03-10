@@ -29,17 +29,19 @@ class NotificationViewModel: ObservableObject {
     static func uploadNotification(toUid uid: String, type: NotificationType, post: Post? = nil) {
         guard let user = AuthViewModel.shared.currentUser else { return }
         
-        var data: [String: Any] = ["timestamp": Timestamp(date: Date()),
-                                   "username": user.username,
-                                   "uid": user.id ?? "",
-                                   "profileImageURL": user.profileImageURL,
-                                   "type": type.rawValue]
-        
-        if let post = post, let postId = post.id {
-            data["postId"] = postId
+        if uid != user.id {
+            var data: [String: Any] = ["timestamp": Timestamp(date: Date()),
+                                       "username": user.username,
+                                       "uid": user.id ?? "",
+                                       "profileImageURL": user.profileImageURL,
+                                       "type": type.rawValue]
+            
+            if let post = post, let postId = post.id {
+                data["postId"] = postId
+            }
+            
+            COLLECTION_NOTIFICATIONS.document(uid).collection("user-notifications").addDocument(data: data)
         }
-        
-        COLLECTION_NOTIFICATIONS.document(uid).collection("user-notifications").addDocument(data: data)
     }
     
 }

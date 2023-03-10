@@ -13,12 +13,14 @@ import FirebaseFirestore
 class AuthViewModel: ObservableObject {
     @Published var userSession: FirebaseAuth.User?
     @Published var currentUser: User?
+    @Published var didSendPasswordLink: Bool = false
     
     static let shared = AuthViewModel()
     
     init() {
         userSession = Auth.auth().currentUser
         fetchUser()
+        print("DEBUG: fetchUserPost 000")
     }
     
     func login(withEmail email: String, password: String) {
@@ -65,6 +67,18 @@ class AuthViewModel: ObservableObject {
             }
         }
         
+    }
+    
+    func resetPassword(withEmail email: String) {
+        Auth.auth().sendPasswordReset(withEmail: email) { error in
+            if let error = error {
+                print("DEBUG: resetPassword error \(error.localizedDescription)")
+                return
+            } else {
+                print("DEBUG: resetPassword success")
+                self.didSendPasswordLink = true
+            }
+        }
     }
     
     func signout() {

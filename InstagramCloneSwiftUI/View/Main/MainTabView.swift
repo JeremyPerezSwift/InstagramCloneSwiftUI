@@ -57,9 +57,11 @@ struct MainTabView: View {
                     }
                     .tag(3)
                 
-                ProfileView(user: user)
+               
+                ProfileView(viewModel: ProfileViewModel(user: user))
                     .onTapGesture {
                         selectedIndex = 4
+                        print("DEBUG: fetchUserPost Main")
                     }
                     .tabItem {
                         Image(systemName: "person")

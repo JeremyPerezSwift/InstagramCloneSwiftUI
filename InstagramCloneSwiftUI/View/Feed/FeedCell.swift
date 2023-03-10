@@ -21,7 +21,9 @@ struct FeedCell: View {
         VStack(alignment: .leading) {
             HStack {
                 NavigationLink {
-                    
+                    if let user = viewModel.post.user {
+                        ProfileView(viewModel: ProfileViewModel(user: user))
+                    }
                 } label: {
                     KFImage(URL(string: viewModel.post.ownerImageUrl))
                         .resizable()
@@ -100,7 +102,7 @@ struct FeedCell: View {
             .padding(.horizontal, 8)
 //            .padding(.bottom, 1)
             
-            Text("2d")
+            Text(viewModel.timestampString)
                 .font(.system(size: 14))
                 .foregroundColor(.gray)
                 .padding(.leading, 8)
