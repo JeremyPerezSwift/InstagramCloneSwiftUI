@@ -13,7 +13,7 @@ Users can also benefit from advanced features such as monitoring database events
 - Clone the repository
 - Create a new project in your Firebase console by clicking "Add project"
 - Add the GoogleService-Info.plist file downloaded from Step 2 to the InstagramClone directory
-- Run the InstagramClone target on your device/simulator
+- Run the InstagramCloneSwiftUI target on your device/simulator
 
 # Screenshots
 
