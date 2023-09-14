@@ -2,6 +2,12 @@
 
 A detailed clone of the Instagram app built with Firebase.
 
+The application is an Instagram clone that allows users to share photos, follow other users, and receive real-time notifications. It offers a range of advanced features such as profile creation, user authentication with Firebase, user searching, posting tweets, news feeds with tweets, liking tweets, as well as the ability to follow or unfollow other users directly from their profiles.
+
+This app was developed using SwiftUI to provide a sophisticated and sleek user interface, while employing the MVVM pattern to organize the code. The platform uses Cloud Firestore to store data, including uploaded images, and enables users to log in and sign up with ease through Firebase.
+
+Users can also benefit from advanced features such as monitoring database events, optimally structuring data for peak performance, building views and controllers programmatically, managing incoming JSON data, using Swift Package Manager and custom third-party APIs, as well as crafting extensions and functions for clean and reusable code.
+
 # Installation
 
 - Clone the repository
@@ -22,4 +28,4 @@ A detailed clone of the Instagram app built with Firebase.
 
 # Author
 
-<img src="https://github.com/JeremyPerezSwift/InstagramCloneSwiftUI/assets/55399639/676d6bcf-3330-4f05-b3b8-cf83a07fc870" width="30" height="30" /> Jérémy Perez - http://perezjeremy.fr
+Jérémy Perez - http://perezjeremy.fr
