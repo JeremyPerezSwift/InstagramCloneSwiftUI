@@ -19,3 +19,7 @@ A detailed clone of the Instagram app built with Firebase.
 <img src="https://github.com/JeremyPerezSwift/InstagramCloneSwiftUI/assets/55399639/68799413-ab16-4a04-8219-61285c40debb" width="200" height="350" />
 <img src="https://github.com/JeremyPerezSwift/InstagramCloneSwiftUI/assets/55399639/e97aea98-53b8-49d0-a654-38dc24ce6fb2" width="200" height="350" />
 <img src="https://github.com/JeremyPerezSwift/InstagramCloneSwiftUI/assets/55399639/676d6bcf-3330-4f05-b3b8-cf83a07fc870" width="200" height="350" />
+
+# Author
+
+<img src="https://github.com/JeremyPerezSwift/InstagramCloneSwiftUI/assets/55399639/676d6bcf-3330-4f05-b3b8-cf83a07fc870" width="30" height="30" /> Jérémy Perez - http://perezjeremy.fr
